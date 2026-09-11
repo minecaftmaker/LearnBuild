@@ -2,66 +2,59 @@
 
 **Learn technology by rebuilding it.**
 
-LearnBuild is a Duolingo-inspired, project-first platform for students and adults who want to understand what is actually happening underneath modern technology.
+LearnBuild is being built as a full learning platform—not a static tutorial list. The product combines a W3Schools-style reference library, Duolingo-style progression, project-based learning, coding playgrounds, hosting/server education, achievements, community surfaces and a path toward real synced accounts and isolated code execution.
 
-Instead of only learning syntax, you build small versions of the systems you use: an HTTP server, Git client, database, router, shell, container, package manager, bytecode VM, compiler and hosted service.
+## What is in the platform now
 
-## Learning experience
+- **10 technical tracks** covering web, JavaScript, Python, Git, databases, servers/networking, Linux/containers, cloud/hosting, compilers/languages, and security/reliability.
+- **200 core lessons** with concepts, build tasks, checks and capstones.
+- **100 practice challenges** for active recall and hands-on repetition.
+- **60 project specifications** ranging from a tiny Git implementation to databases, compilers, servers and the full LearnBuild capstone.
+- **16 language labs** covering Python, JavaScript, TypeScript, Go, Rust, Java, C, C++, C#, Kotlin, Ruby, PHP, Swift, Assembly, SQL, Bash and Lua.
+- **Product UI** for home dashboard, library/search, tracks, daily practice, project studio, hosting lab, community, leaderboard, profile, settings and sign-in.
+- **Gamification** with XP, streaks, progress, badges and completion state.
+- **Hosting Lab** that teaches static hosting → DNS → HTTPS → CI/CD → logs → health checks → containers → scaling.
+- **Production auth hooks** for Supabase email/password, Google OAuth and Apple OAuth when environment variables are configured.
+- **Backend contracts** for progress, profiles, code judging and trusted service boundaries.
+- **GitHub Pages deployment** through Actions.
+- **Manifest tooling** so the repository can generate a complete `MANIFEST.md` from the actual working tree.
 
-**Tiny lesson → example → prediction → build → automated check → reflection → XP → project.**
+The repository is intentionally well over the small-demo scale and is structured so additional lessons, challenges, projects and languages can be added without rewriting the application shell.
 
-The curriculum is designed as a long-form journey of roughly **12–24 months** for a motivated learner under 14, with optional acceleration for adults.
+## Learning loop
 
-## Tracks
+**Tiny lesson → example → prediction → build → check → reflection → XP → project → deploy.**
 
-- 🌐 Web Foundations
-- 🌱 Git & Version Control
-- 🗃️ Databases
-- 🛰️ Servers & Networking
-- 🐧 Linux & Containers
-- ☁️ Cloud & Hosting
-- 🧠 Python, JavaScript/TypeScript, Go, Rust, Java, C/C++
-- ⚙️ Build Systems, interpreters and compilers
-- 🛡️ Security & Reliability
+The curriculum is designed as a long-form journey of roughly **12–24 months** for a motivated younger learner, with optional acceleration for adults.
 
-## Repository architecture
+## Product architecture
 
 ```text
 LearnBuild/
-├── .github/workflows/          # GitHub Pages deployment
-├── config/                     # Product/curriculum configuration
-├── curriculum/                 # Long-form lesson source
-│   ├── web/
-│   ├── git/
-│   ├── db/
-│   ├── server/
-│   ├── linux/
-│   ├── cloud/
-│   ├── languages/
-│   ├── build/
-│   └── security/
-├── docs/                       # Product, pedagogy and architecture
-├── labs/                       # Language-specific project starters
-├── public/                     # Static assets and web manifest
-├── src/
-│   ├── components/             # Reusable learning UI
-│   ├── data/                   # Curriculum registry and gamification
-│   ├── hooks/                  # Client state hooks
-│   ├── lib/                    # Storage/auth/integration boundaries
-│   ├── pages/                  # Product surfaces
-│   └── types/                  # Domain types
-└── supabase/                   # Optional hosted auth/progress schema
+├── .github/workflows/       # GitHub Pages deployment
+├── config/                  # Feature flags and curriculum rules
+├── curriculum/              # Existing long-form track source
+├── data/                    # 200 lessons + 100 challenges
+├── projects/                # 60 project specs
+├── languages/               # Multi-language lab guides
+├── labs/                    # Runnable language starters
+├── server/                  # Trusted-service boundary and contracts
+├── scripts/                 # Repository tooling
+├── docs/                    # Product, teaching, auth and architecture docs
+├── public/                  # Static assets
+├── src/                     # React/Vite product
+└── supabase/                # Optional database/auth schema
 ```
 
-## Authentication and sync
+## Authentication
 
-GitHub Pages is static hosting, so the browser client cannot safely contain private server credentials. LearnBuild therefore keeps authentication behind an adapter. The planned production integration supports **email/password, Google OAuth and Sign in with Apple**, with Supabase as the reference implementation.
+The browser can run in local demo mode on GitHub Pages. For real multi-device accounts, configure Supabase using `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. The auth integration supports email/password plus Google and Apple OAuth through the Supabase client.
 
-Never commit service-role keys. See `docs/AUTH.md`.
+Never expose a Supabase service-role key in the frontend.
 
-## Hosting education
+## Code execution
 
-Hosting is part of the curriculum, not a final deployment button. Learners progress from static pages to DNS, HTTPS, CI/CD, environment configuration, logs, health checks, containers, reverse proxies and scaling.
+LearnBuild does **not** pretend that arbitrary student code can safely execute inside a GitHub Pages browser tab. The production architecture separates the frontend from a trusted judge service that can run code in disposable, resource-limited sandboxes. See `server/contracts/judge.md` and `docs/ARCHITECTURE_FULL.md`.
 
 ## Local development
 
@@ -70,21 +63,23 @@ npm install
 npm run dev
 ```
 
-Build for production:
+For a production build:
 
 ```bash
 npm run build
 npm run preview
 ```
 
+Generate a complete working-tree manifest with:
+
+```bash
+npm run manifest
+```
+
 ## GitHub Pages
 
-The repository includes `.github/workflows/deploy.yml`. Enable **GitHub Pages → Source: GitHub Actions** in repository settings. The Vite base path is configured for `/LearnBuild/`.
+The repository includes `.github/workflows/deploy.yml`. Configure GitHub Pages to use **GitHub Actions**. The Vite app is designed for the repository subpath.
 
-## Important implementation note
+## Next production layer
 
-The current repository is the **platform foundation**, not a claim that secure multi-user code execution is already implemented. Real sandbox execution, OAuth provider configuration, synced progress, classrooms and production hosting labs belong in the next platform phases. This separation keeps a static GitHub Pages deployment safe while leaving room for a serious backend.
-
-## License
-
-See `docs/COPYRIGHT.md` for the content policy. Add a project license before accepting external contributions.
+The foundation is now large enough to support the next serious implementation stage: real Supabase sessions wired into every auth button, synced progress/projects, classrooms and teacher tools, and a hardened multi-language code judge. Those pieces belong behind trusted services rather than being faked inside a static page.

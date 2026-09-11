@@ -1,1 +1,17 @@
-{"name":"learnbuild","private":true,"version":"0.1.0","type":"module","scripts":{"dev":"vite","build":"vite build","preview":"vite preview","check":"tsc --noEmit"},"dependencies":{"@monaco-editor/react":"latest","@vitejs/plugin-react":"latest","vite":"latest","typescript":"latest","react":"latest","react-dom":"latest"},"devDependencies":{}}
+{
+  "name":"learnbuild",
+  "private":true,
+  "version":"2.0.0",
+  "type":"module",
+  "scripts":{"dev":"vite","build":"vite build","preview":"vite preview","check":"tsc --noEmit","manifest":"node scripts/generate-manifest.mjs"},
+  "dependencies":{
+    "@monaco-editor/react":"latest",
+    "@supabase/supabase-js":"latest",
+    "@vitejs/plugin-react":"latest",
+    "vite":"latest",
+    "typescript":"latest",
+    "react":"latest",
+    "react-dom":"latest"
+  },
+  "devDependencies":{}
+}

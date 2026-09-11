@@ -1,9 +1,7 @@
-# Product principles
+# LearnBuild product specification
 
-1. Never assume prior knowledge without a link to the missing concept.
-2. Every lesson should make something observable.
-3. Tests teach better than giant answer dumps.
-4. Gamification rewards consistency, not speed.
-5. Adults and younger students share infrastructure but can choose different explanations.
-6. Hosting is a first-class subject, not an afterthought.
-7. Copy/paste is useful for setup, but the learner must explain and modify the system.
+LearnBuild is a complete learning platform, not a documentation site. The product loop is Discover → Learn → Predict → Build → Test → Reflect → Earn XP → Start a project.
+
+The client supports local-first progress. A production deployment may connect the same adapters to Supabase for accounts, OAuth, synced progress, classrooms and saved projects. The client never ships a service-role key.
+
+Core surfaces: home dashboard, learning library, track explorer, daily practice, project studio, hosting lab, community, leaderboard, profile, settings and authentication.

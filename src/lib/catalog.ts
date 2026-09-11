@@ -1,0 +1,3 @@
+export const catalog=[
+['web','Web Foundations','Packets → Browser → DOM → HTTPS'],['js','JavaScript','Language → Runtime → Async → Tooling'],['python','Python','Syntax → Data → Files → Services'],['git','Git & Collaboration','Objects → Refs → Merge → Collaboration'],['db','Databases','Pages → Indexes → Query → Transactions'],['server','Servers & Networking','TCP → HTTP → DNS → Proxies → TLS'],['linux','Linux & Containers','Processes → Files → Namespaces → Images'],['cloud','Cloud & Hosting','Deploy → Domains → CI → Logs → Scale'],['build','Compilers & Languages','Tokens → AST → Bytecode → VM'],['security','Security & Reliability','Threats → Auth → Secrets → Resilience']
+] as const;

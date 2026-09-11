@@ -1,0 +1,2 @@
+# Namespaces
+Isolate process views.

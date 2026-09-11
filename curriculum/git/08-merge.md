@@ -1,0 +1,2 @@
+# Merging
+Combine two histories.

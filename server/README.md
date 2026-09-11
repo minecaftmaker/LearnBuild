@@ -1,11 +1,1 @@
-# LearnBuild backend
-
-GitHub Pages serves the frontend. This folder describes the production service boundary for features that require trusted execution: account profiles, synced progress, project saves, code judging, classrooms and provider integrations.
-
-Recommended services:
-- Supabase Auth/Postgres for identity and synchronized data.
-- A sandbox runner for student code with CPU, memory, time and filesystem quotas.
-- Object storage for project artifacts.
-- A queue for long-running evaluations.
-
-Never execute arbitrary student code inside the GitHub Pages browser process or a shared unrestricted server process.
+# LearnBuild API\n\nBackend boundary for account-backed progress, lesson completion, project milestones, classrooms and future isolated code execution.\n\nThe browser app can run on GitHub Pages in local-progress mode. Production accounts use Supabase Auth and a hosted API. Never put database service-role keys in the browser.\n\n## Local\n\n```bash\nnpm install\nnpm run dev\n```\n\nHealth: `GET /health`.\n

@@ -1,0 +1,1 @@
+export function ProgressRing({value}:{value:number}){const pct=Math.max(0,Math.min(100,value));return <div className="ring" style={{'--p':`${pct*3.6}deg`} as React.CSSProperties}><strong>{pct}%</strong></div>}

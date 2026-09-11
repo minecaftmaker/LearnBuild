@@ -1,0 +1,1 @@
+export const roadmap=[{year:1,title:'Foundations',months:['Web','Git','Python','HTTP','Linux']},{year:2,title:'Systems',months:['Databases','Networking','Go','Containers','Cloud']},{year:3,title:'Engineering',months:['Rust','Compilers','Security','Reliability','Capstone']}];

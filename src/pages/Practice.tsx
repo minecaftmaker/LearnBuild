@@ -1,0 +1,1 @@
+import {challenges} from '../data/challenges';export function Practice(){return <><h2>Practice</h2><p className="muted">Short reps keep your concepts fresh between lessons.</p><div className="challenge-grid">{challenges.map(c=><article className="challenge" key={c.id}><small>{c.kind}</small><h3>{c.title}</h3><p>{c.description}</p><b>+{c.reward} XP</b></article>)}</div></>}

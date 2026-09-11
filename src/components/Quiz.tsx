@@ -1,0 +1,2 @@
+import {useState} from 'react';
+export function Quiz({question,answers,correct}:{question:string;answers:string[];correct:number}){const [picked,setPicked]=useState<number|null>(null);return <div className="quiz"><h3>{question}</h3>{answers.map((a,i)=><button key={a} className={picked===i?(i===correct?'right':'wrong'):''} onClick={()=>setPicked(i)}>{a}</button>)}{picked!==null&&<p>{picked===correct?'Nice. Explain why before moving on.':'Almost. Read the hint and try again.'}</p>}</div>}

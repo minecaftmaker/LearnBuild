@@ -1,0 +1,2 @@
+import type {Lesson} from '../types/lesson';
+export function LessonCard({lesson,complete,onOpen}:{lesson:Lesson;complete?:number;onOpen?:()=>void}){return <button className="lesson-card" onClick={onOpen}><div className="lesson-meta"><span>Stage {lesson.stage}</span><span>+{lesson.xp} XP</span></div><h3>{lesson.title}</h3><p>{lesson.goal}</p><div className="lesson-bottom"><span>{lesson.minutes} min</span>{complete?<b>Best {complete}%</b>:<span>Not started</span>}</div></button>}

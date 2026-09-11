@@ -1,0 +1,2 @@
+import type {Track} from '../types/track';
+export function TrackCard({track,progress=0}:{track:Track;progress?:number}){return <a className="track-card" href={`#/track/${track.id}`}><div className={`track-icon ${track.color}`}>{track.emoji}</div><div><small>{track.estimatedMonths} month path</small><h3>{track.title}</h3><p>{track.tagline}</p><div className="bar"><i style={{width:`${progress}%`}}/></div></div></a>}

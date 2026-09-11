@@ -1,0 +1,2 @@
+import {tracks} from '../data/tracks';import {TrackCard} from '../components/TrackCard';import {lessons} from '../data/lessons';import {LessonCard} from '../components/LessonCard';
+export function Learn(){return <><h2>Choose your path</h2><p className="muted">You don't need to know everything. Learn one concept, build one thing, repeat.</p><div className="track-grid">{tracks.map(t=><TrackCard key={t.id} track={t} progress={t.id==='web'?38:0}/>)}</div><section className="daily"><h2>Today's lesson</h2><LessonCard lesson={lessons[0]}/></section></>}

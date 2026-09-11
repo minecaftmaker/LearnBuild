@@ -1,0 +1,1 @@
+export function TopBar({title='Today'}:{title?:string}){return <header className="topbar"><div><small>LEARNBUILD</small><h1>{title}</h1></div><div className="top-actions"><span className="streak">🔥 7</span><span className="xp-pill">2,480 XP</span><button>Profile</button></div></header>}

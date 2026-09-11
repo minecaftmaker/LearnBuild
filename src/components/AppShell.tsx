@@ -1,0 +1,2 @@
+import {PropsWithChildren} from 'react';
+export function AppShell({children}:PropsWithChildren){return <div className="shell"><aside className="sidebar"><div className="brand">LB<span>LearnBuild</span></div><nav><a href="#/learn">Learn</a><a href="#/practice">Practice</a><a href="#/projects">Projects</a><a href="#/hosting">Hosting</a><a href="#/community">Community</a></nav><div className="side-foot">Build the web. Understand the machine.</div></aside><div className="content">{children}</div></div>}

@@ -1,0 +1,9 @@
+services:
+  learnbuild-api:
+    image: node:22-alpine
+    working_dir: /app
+    command: ["node","server/index.js"]
+    ports: ["8787:8787"]
+    environment:
+      PORT: 8787
+    volumes: ["./:/app"]
